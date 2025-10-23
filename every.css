@@ -1,31 +1,30 @@
-.sidenav {
-            
+        .sidenav {
             height: 100%; /* 100% Full-height */
             width: 0; /* 0 width - change this with JavaScript */
             position: fixed; /* Stay in place */
-            z-index: 1; /* Stay on top */
+            z-index: 1000; /* Stay on top */
             top: 0; /* Stay at the top */
             left: 0;
             background-color: #111; /* Black*/
             overflow-x: hidden; /* Disable horizontal scroll */
             padding-top: 60px; /* Place content 60px from the top */
-            transition: ease-in-out 1s;
+            transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
         }
 
 /* The navigation menu links */
         .sidenav a {
             padding: 8px 8px 8px 32px;
-            margin-left: 35px;
             text-decoration: none;
             font-size: 25px;
             color: #818181;
             display: block;
-            transition: ease-in-out 0.2s;
+            transition: 0.3s;
         }
-
+        
         /* When you mouse over the navigation links, change their color */
         .sidenav a:hover {
-        color: #f1f1f1;
+            color: #f1f1f1;
+            cursor: pointer;
         }
 
         /* Position and style the close button (top right corner) */
@@ -35,22 +34,64 @@
         right: 25px;
         font-size: 36px;
         margin-left: 50px;
+        cursor: pointer;
         }
 
-        .openbtn {
+        .active {
+            background-color: #87ff8f;
+            margin-right: 50px;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+
+            .openbtn {
             background-color: #111;
             color: white;
-            padding: 10px;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 1000;
+            padding: 15px 20px;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 999;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            animation: float 3s ease-in-out infinite;
+            transition: all 0.3s ease;
+
+            width: auto; 
+            height: auto;
+            min-width: 20px;
+            min-height: 20px; 
+            
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
         }
 
         .openbtn:hover {
-            transition: 2s;
-            cursor:pointer;
+            background-color: #333;
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            animation-play-state: paused;
+        }
+
+        .openbtn:active {
+            transform: translateY(0px) scale(0.95);
         }
 
         .active {
