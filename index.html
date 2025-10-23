@@ -3,7 +3,7 @@
 <head>
     <link rel="stylesheet" href="every.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Etusivu</title>
+    <title>Front page</title>
     <style>
         html, body {
             height: 100%;
@@ -35,7 +35,6 @@
                background-position: 0% 20%;
            }
         }
-
         
         .scene {
             width: 1200px;
@@ -83,64 +82,6 @@
             font-weight: bold;
         }
 
-       .sidenav {
-            height: 100%; /* 100% Full-height */
-            width: 0; /* 0 width - change this with JavaScript */
-            position: fixed; /* Stay in place */
-            z-index: 1; /* Stay on top */
-            top: 0; /* Stay at the top */
-            left: 0;
-            background-color: #111; /* Black*/
-            overflow-x: hidden; /* Disable horizontal scroll */
-            padding-top: 60px; /* Place content 60px from the top */
-            transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
-        }
-
-/* The navigation menu links */
-        .sidenav a {
-            padding: 8px 8px 8px 32px;
-            text-decoration: none;
-            font-size: 25px;
-            color: #818181;
-            display: block;
-            transition: 0.3s;
-        }
-
-        /* When you mouse over the navigation links, change their color */
-        .sidenav a:hover {
-        color: #f1f1f1;
-        }
-
-        /* Position and style the close button (top right corner) */
-        .sidenav .closebtn {
-        position: absolute;
-        top: 0;
-        right: 25px;
-        font-size: 36px;
-        margin-left: 50px;
-        }
-
-        .openbtn {
-            background-color: #111;
-            color: white;
-            padding: 10px;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 1000;
-        }
-
-        .openbtn:hover {
-            transition: 2s;
-            cursor:pointer;
-        }
-
-        .active {
-            background-color: #87ff8f;
-            margin-right: 50px;
-        }
-
         .scene {
         padding: 20px;
         }
@@ -152,21 +93,36 @@
 
         /* Mobile Responsive Design */
         @media screen and (max-width: 768px) {
+             body {
+                min-height: 100vh;
+                padding: 10px 0;
+                align-items: flex-start;
+                justify-content: center;
+            }
             .scene {
                 width: 95vw;
                 height: auto;
-                min-height: 80vh;
+                min-height: 90vh;
                 padding: 10px;
+                margin-top: 60px;
+                position: relative;
             }
             
             .card {
                 width: 100%;
                 height: auto;
+                min-height: 80vh;
+            }
+            .side {
+                height: auto;
+                min-height: 80vh;
+                padding: 20px;
             }
             
             table {
                 display: block;
                 width: 100%;
+                height: auto;
             }
             
             tr {
@@ -185,16 +141,19 @@
                 width: 80%;
                 font-size: 1.5rem;
                 padding: 8px;
+                margin-bottom: 20px;
             }
             
             .leftUp, .leftDown, .right {
                 margin-bottom: 20px;
                 padding: 15px;
+                height: auto !important;
+                min-height: 200px;
             }
             
             /* Keep zoom effects but make them smaller on mobile */
             .leftUp.zoomed, .leftDown.zoomed, .right.zoomed {
-                transform: scale(1.2);
+                transform: scale(1.1) !important;
                 z-index: 100;
             }
             
@@ -211,9 +170,21 @@
         }
 
         @media screen and (max-width: 480px) {
+            .body {
+                padding: 5px 0;
+            }
             .scene {
                 width: 98vw;
                 padding: 5px;
+                margin-top: 50px;
+                min-height: 95vh;
+            }
+            .card {
+                min-height: 90vh;
+            }
+            .side {
+                min-height: 90vh;
+                padding: 15px;
             }
             
             h1 {
@@ -225,10 +196,12 @@
             .leftUp, .leftDown, .right {
                 padding: 12px;
                 font-size: 14px;
+                min-height: 180px;
             }
             
             h2 {
                 font-size: 1.1rem;
+                margin-bottom: 10px;
             }
             
             ul li {
@@ -239,7 +212,7 @@
             
             /* Smaller zoom effect for very small screens */
             .leftUp.zoomed, .leftDown.zoomed, .right.zoomed {
-                transform: scale(1.15);
+                transform: scale(1.05) !important;
             }
         }
 
