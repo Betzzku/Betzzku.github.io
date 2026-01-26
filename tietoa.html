@@ -6,251 +6,365 @@
     <title>Information</title>
     
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         html, body {
             height: 100%;
             margin: 0;
             padding: 0;
             background: #ffffff;
         }
+
         body {
             display: flex;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(-45deg, #ffffff, #e8f5e9, #e0f7fa, #fff8e1, #ffffff);
+            background-size: 400% 400%;
+            animation: gradientShift 20s ease infinite;
+            padding: 20px;
         }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
         .scene {
-            width: 1200px;
-            height: 1000px;
+            width: 1400px;
+            max-width: 98vw;
+            min-height: 900px;
+            padding: 30px;
         }
+
         .card {
-            width: 90%;
-            height: 90%;
+            width: 100%;
+            height: 100%;
             position: relative;
             transition: transform 1s cubic-bezier(.4,2,.6,1);
             transform-style: preserve-3d;
         }
     
         .side {
-            position: absolute;
             width: 100%;
             height: 100%;
             backface-visibility: hidden;
-            border-radius: 15px;
-            box-shadow: 0px 0px 7px 7px rgba(0, 0, 0, 0.2);
-            overflow: hidden;
+            border-radius: 30px;
+            box-shadow: 
+                0 30px 60px rgba(0, 0, 0, 0.12),
+                0 15px 30px rgba(0, 0, 0, 0.08);
+            overflow: visible;
+            padding: 50px;
         }
+
         .front {
-            background: linear-gradient(to right, #f6fff6 0%, #b8ffe9 51%, #e7ffe8 100%);
-            
+            background: linear-gradient(145deg, #f0fff4 0%, #ffffff 50%, #e8f5e9 100%);
         }
         
         h1 {
-            background-color: white;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
             text-align: center;
-            padding: 10px;
-            border-radius: 10px;
-            width: 40%;
-            margin: 0 auto;
-            box-shadow: 0px 0px 7px 7px rgba(0, 0, 0, 0.2);
+            padding: 25px 40px;
+            border-radius: 20px;
+            width: 50%;
+            margin: 0 auto 40px auto;
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.1),
+                0 5px 15px rgba(0, 0, 0, 0.07);
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #2c3e50;
+            letter-spacing: 1px;
+            transition: all 0.5s cubic-bezier(.4,2,.6,1);
         }
 
         h1:hover {
-            
-            transform:  rotateX(12deg) rotateY(0deg) scale(1.03);
-            transition: transform 0.9s cubic-bezier(.4,2,.6,1);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 
+                0 25px 50px rgba(0, 0, 0, 0.15),
+                0 10px 25px rgba(0, 0, 0, 0.1);
         }
 
-        .active {
-            background-color: #87ff8f;
-            margin-right: 50px;
+        h2 {
+            font-size: 1.6rem;
+            color: #2ecc71;
+            margin-bottom: 25px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            border-bottom: 3px solid #e8f5e9;
+            padding-bottom: 10px;
+            display: inline-block;
         }
 
-        .scene {
-        padding: 20px;
+        ul {
+            padding-left: 25px;
+            margin-bottom: 20px;
+        }
+
+        ul li {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        ul li::marker {
+            color: #2ecc71;
+        }
+
+        /* Tools Grid */
+        .tools-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .tool-tag {
+            background: linear-gradient(135deg, #c1cc2e 0%, #b5d114 100%);
+            color: white;
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: default;
+            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+        }
+
+        .tool-tag:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(46, 204, 113, 0.4);
+        }
+
+        /* Engine showcase */
+        .engine-showcase {
+            text-align: center;
+            padding: 15px;
+            background: linear-gradient(145deg, #f8f9fa 0%, #ffffff 100%);
+            border-radius: 15px;
+            border: 2px solid #e8f5e9;
+        }
+
+        .engine-logo img {
+            filter: grayscale(0%);
+            transition: all 0.3s ease;
+        }
+
+        .engine-logo:hover img {
+            transform: scale(1.1);
         }
 
         @media screen and (max-height: 450px) {
-        .sidenav {padding-top: 15px;}
-        .sidenav a {font-size: 18px;}
+            .sidenav {padding-top: 15px;}
+            .sidenav a {font-size: 18px;}
         }
 
-
-    /*Table CSS*/
+        /* Table CSS */
         table {
-            padding-left: 10px;
-            padding-right: 10px;
+            padding: 20px;
+            overflow: visible;
+            border-spacing: 20px;
         }
 
         .leftUp {
-            transition: all 0.6s ease-in-out;
-            background-size: 200% auto;
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 6px 10px 7px rgba(0, 0, 0, 0.2);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.08),
+                0 5px 15px rgba(0, 0, 0, 0.05);
             position: relative;
             z-index: 1;
             cursor: pointer;
+            border-left: 5px solid #2ecc71;
         }
+
+        .leftUp:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 20px 45px rgba(0, 0, 0, 0.12),
+                0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+
         .leftUp.zoomed {
-            transition: all 0.6s ease-in-out;
-            background-size: 200% auto;
-            transform: scale(1.5) translate(20%, 20%);
-            background-position: right center;
-            background-image: linear-gradient(to left, #ffffff 0%, #ffffff 51%, #87ff8f 100%);
-            box-shadow: 0px 15px 20px 15px rgba(0, 0, 0, 0.4);
+            transform: scale(1.4) translate(15%, 15%);
+            background: linear-gradient(145deg, #ffffff 0%, #e8f5e9 100%);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
             z-index: 100;
+            border-left: 5px solid #27ae60;
         }
 
         .leftDown {
-            transition: all 0.6s ease-in-out;
-            background-size: 200% auto;
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 6px 10px 7px rgba(0, 0, 0, 0.2);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.08),
+                0 5px 15px rgba(0, 0, 0, 0.05);
             position: relative;
             z-index: 1;
             cursor: pointer;
+            border-left: 5px solid #e74c3c;
         }
+
+        .leftDown:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 20px 45px rgba(0, 0, 0, 0.12),
+                0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+
         .leftDown.zoomed {
-            transition: all 0.6s ease-in-out;
-            background-size: 200% auto;
-            transform: scale(1.5) translate(20%, -20%);
-            background-position: right center;
-            background-image: linear-gradient(to left, #ffffff 0%, #ffffff 51%, #87ff8f 100%);
-            box-shadow: 0px 15px 20px 15px rgba(0, 0, 0, 0.4);
+            transform: scale(1.4) translate(15%, -15%);
+            background: linear-gradient(145deg, #ffffff 0%, #ffebee 100%);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
             z-index: 100;
+            border-left: 5px solid #c0392b;
         }
         
         .right {
-           transition: all 1s ease-in-out;
-           background-color: white;
-           background-size: 200% auto;
-           padding: 20px;
-           border-radius: 10px;
-           box-shadow: 0px 6px 10px 7px rgba(0, 0, 0, 0.2);
-           position: relative;
-           z-index: 1;
-           cursor: pointer;
-       }
-       .right.zoomed {
-           transition: all 1s ease-in-out;
-           transform: scale(1.5) translate(-20%, 0%);
-           background-size: 200% auto;
-           background-position: right center;
-           background-image: linear-gradient(to right, #ffffff 0%, #ffffff 51%, #87ff8f 100%);
-           box-shadow: 0px 15px 20px 15px rgba(0, 0, 0, 0.4);
-           z-index: 100;
-       }
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.08),
+                0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+            z-index: 1;
+            cursor: pointer;
+            border-left: 5px solid #1db954;
+        }
+
+        .right:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 20px 45px rgba(0, 0, 0, 0.12),
+                0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .right.zoomed {
+            transform: scale(1.4) translate(-15%, 0%);
+            background: linear-gradient(145deg, #ffffff 0%, #e8f5e9 100%);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
+            z-index: 100;
+            border-left: 5px solid #1ed760;
+        }
 
         td {
-            color:rgb(128, 131, 135); 
+            color: #555;
+            vertical-align: top;
         }
-        * {box-sizing:border-box}
 
         /* Slideshow container */
         .slideshow-container {
-        max-width: 1000px;
-        position: relative;
-        margin: auto;
+            max-width: 100%;
+            position: relative;
+            margin: auto;
+            border-radius: 15px;
+            overflow: hidden;
         }
 
         /* Hide the images by default */
         .mySlides {
-        display: none;
+            display: none;
         }
 
         /* Next & previous buttons */
         .prev, .next {
-        cursor: pointer;
-        position: absolute;
-        top: 50%;
-        width: auto;
-        margin-top: -22px;
-        padding: 16px;
-        color: white;
-        font-weight: bold;
-        font-size: 18px;
-        transition: 0.6s ease;
-        border-radius: 0 3px 3px 0;
-        user-select: none;
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            margin-top: -30px;
+            padding: 20px 18px;
+            color: white;
+            font-weight: bold;
+            font-size: 22px;
+            transition: all 0.4s ease;
+            border-radius: 50%;
+            user-select: none;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 10;
         }
 
-        /* Position the "next button" to the right */
+        .prev {
+            left: 10px;
+        }
+
         .next {
-        right: 0;
-        border-radius: 3px 0 0 3px;
+            right: 10px;
         }
 
-        /* On hover, add a black background color with a little bit see-through */
         .prev:hover, .next:hover {
-        background-color: rgba(0,0,0,0.8);
-        }
-
-        /* Caption text */
-        .text {
-        color: #f2f2f2;
-        font-size: 15px;
-        padding: 8px 12px;
-        position: absolute;
-        bottom: 8px;
-        width: 100%;
-        text-align: center;
+            background: linear-gradient(135deg, #1db954 0%, #1ed760 100%);
+            transform: scale(1.1);
+            box-shadow: 0 5px 20px rgba(29, 185, 84, 0.4);
         }
 
         /* Number text (1/3 etc) */
         .numbertext {
-        color: #f2f2f2;
-        font-size: 12px;
-        padding: 8px 12px;
-        position: absolute;
-        top: 0;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 12px 18px;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 25px;
+            z-index: 10;
         }
 
         /* Fading animation */
         .fade {
-        animation-name: fade;
-        animation-duration: 1.5s;
+            animation-name: fade;
+            animation-duration: 0.8s;
         }
 
         @keyframes fade {
-        from {opacity: .4}
-        to {opacity: 1}
-        }
-
-        /* Mobile Responsive Design for Info Page */
-        @media screen and (max-height: 450px) {
-        .sidenav {padding-top: 15px;}
-        .sidenav a {font-size: 18px;}
+            from {opacity: .4; transform: scale(0.98);}
+            to {opacity: 1; transform: scale(1);}
         }
 
         /* Mobile Responsive Design */
         @media screen and (max-width: 768px) {
-             body {
+            body {
                 min-height: 100vh;
-                padding: 10px 0;
+                padding: 10px;
                 align-items: flex-start;
                 justify-content: center;
             }
             .scene {
-                width: 95vw;
+                width: 100%;
                 height: auto;
-                min-height: 90vh;
+                min-height: auto;
                 padding: 10px;
                 margin-top: 60px;
-                position: relative;
             }
             
             .card {
                 width: 100%;
                 height: auto;
-                min-height: 80vh;
             }
             .side {
                 height: auto;
-                min-height: 80vh;
-                padding: 20px;
+                padding: 25px;
+                border-radius: 20px;
             }
             
             table {
@@ -272,26 +386,32 @@
             }
             
             h1 {
-                width: 80%;
-                font-size: 1.5rem;
-                padding: 8px;
-                margin-bottom: 20px;
+                width: 90%;
+                font-size: 1.8rem;
+                padding: 20px;
+                margin-bottom: 25px;
+            }
+
+            h2 {
+                font-size: 1.3rem;
+            }
+
+            ul li {
+                font-size: 1rem;
             }
             
             .leftUp, .leftDown, .right {
                 margin-bottom: 20px;
-                padding: 15px;
+                padding: 25px;
                 height: auto !important;
-                min-height: 200px;
+                min-height: auto;
             }
             
-            /* Keep zoom effects but make them smaller on mobile */
             .leftUp.zoomed, .leftDown.zoomed, .right.zoomed {
-                transform: scale(1.1) !important;
+                transform: scale(1.05) !important;
                 z-index: 100;
             }
             
-            /* Mobile navigation adjustments */
             .sidenav a {
                 font-size: 20px;
                 padding: 12px 12px 12px 25px;
@@ -301,52 +421,55 @@
                 padding: 12px;
                 font-size: 16px;
             }
+
+            .prev, .next {
+                padding: 15px 14px;
+                font-size: 18px;
+            }
         }
 
         @media screen and (max-width: 480px) {
-            .body {
-                padding: 5px 0;
+            body {
+                padding: 5px;
             }
             .scene {
-                width: 98vw;
+                width: 100%;
                 padding: 5px;
                 margin-top: 50px;
-                min-height: 95vh;
-            }
-            .card {
-                min-height: 90vh;
             }
             .side {
-                min-height: 90vh;
-                padding: 15px;
+                padding: 20px;
+                border-radius: 15px;
             }
             
             h1 {
-                width: 90%;
-                font-size: 1.3rem;
-                padding: 6px;
+                width: 95%;
+                font-size: 1.5rem;
+                padding: 15px;
+            }
+
+            h2 {
+                font-size: 1.2rem;
+                margin-bottom: 15px;
             }
             
             .leftUp, .leftDown, .right {
-                padding: 12px;
-                font-size: 14px;
-                min-height: 180px;
-            }
-            
-            h2 {
-                font-size: 1.1rem;
-                margin-bottom: 10px;
+                padding: 20px;
             }
             
             ul li {
-                font-size: 14px;
-                line-height: 1.4;
-                margin-bottom: 5px;
+                font-size: 0.95rem;
+                line-height: 1.6;
+                margin-bottom: 10px;
             }
             
-            /* Smaller zoom effect for very small screens */
             .leftUp.zoomed, .leftDown.zoomed, .right.zoomed {
-                transform: scale(1.05) !important;
+                transform: scale(1.02) !important;
+            }
+
+            .prev, .next {
+                padding: 12px 10px;
+                font-size: 16px;
             }
         }
     </style>
@@ -372,59 +495,58 @@
                 <table width="100%">
                     <tr>
                         <td colspan="3">
-                            <h1 style="text-align:center;">more info</h1>    
+                            <h1>More Info</h1>    
                         </td> 
                     </tr>
                     
                     <tr>
-                        <td height="30px" colspan="3"></td>
+                        <td height="20px" colspan="3"></td>
                     </tr>
 
                     <tr>
-                        <td class="leftUp" height="300px" width="49%" onclick="toggleZoom(this)">
-                            <h2>Plans for the future</h2>
+                        <td class="leftUp" height="350px" width="48%" onclick="toggleZoom(this)">
+                            <h2>Plans for the Future</h2>
 
                             <ul type="disc">
-                                <li>publish my game next year</li>
-                                <li>continue to polish my coding skills</li>
-                                <li>learn to code even better</li>
-                                <li>learn C++</li>
-                                <li>Start a game studio</li>
+                                <li>Publish my game next year</li>
+                                <li>Continue to polish my coding skills</li>
+                                <li>Master advanced programming concepts</li>
+                                <li>Learn C++ for game development</li>
+                                <li>Start my own game studio</li>
                             </ul>
                         </td>
 
-                        <td width="2%"></td>
+                        <td width="4%"></td>
 
-                        <td rowspan="3" class="right" height="300px" width="49%">
-                            <h2>Top tier musics on my opinion</h2>
-                            <div class="slideshow-container">
+                        <td rowspan="3" class="right" height="350px" width="48%">
+                            <h2>Favorite Game Engine</h2>
+                            <div class="engine-showcase">
+                                <div class="engine-logo">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Unity_Technologies_logo.svg" alt="Unity" style="width: 120px; margin-bottom: 10px;">
+                                </div>
+                                <p style="font-size: 1.1rem; color: #555; line-height: 1.6;">
+                                    <strong>Unity</strong> I use unity because it uses C# which is the only C language I really know and I'm accustomed to and it has massive amounts of youtube tutorials and videos which makes it great for me!
+                                </p>
+                            </div>
 
-                    <!-- Full-width images with number and caption text -->
-                    <div class="mySlides fade">
-                        <div class="numbertext">1 / 3</div>
-                        <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/0Z2v0nwcyqbrQJYg3z8lHj?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                        
-                    </div>
+                            <h2 style="margin-top: 25px;"> Tools I Use</h2>
+                            <div class="tools-grid">
+                                <span class="tool-tag">VS Code</span>
+                                <span class="tool-tag">Unity</span>
+                                <span class="tool-tag">Github</span>
+                                <span class="tool-tag">DaVinci Resolve</span>
+                                <span class="tool-tag">Blender</span>
+                                <span class="tool-tag">WinSCP</span>
+                                <span class="tool-tag">Docker</span>
+                            </div>
 
-                    <div class="mySlides fade">
-                        <div class="numbertext">2 / 3</div>
-                        <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/6WeNofItjllWhd4GVV6Et3?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                        
-                    </div>
-
-                    <div class="mySlides fade">
-                        <div class="numbertext">3 / 3</div>
-                        <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/7iwPGVfoiedHFNHvpxTznL?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                        
-                    </div>
-
-                    <!-- Next and previous buttons -->
-                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
-                    </div>
-                    <br>
-
-                    
+                            <h2 style="margin-top: 25px;">What Inspires Me</h2>
+                            <ul type="disc" style="margin-bottom: 0;">
+                                <li>Indie game success stories</li>
+                                <li>Creative YouTubers & developers</li>
+                                <li>Seeing my own progress over time</li>
+                                <li>Unity game challenges & gamejams</li>
+                            </ul>
                         </td>
                     </tr>
 
@@ -433,12 +555,12 @@
                     </tr>
 
                     <tr>
-                        <td class="leftDown" width="49%" height="300px" onclick="toggleZoom(this)">
-                            <h2>My projects</h2>
+                        <td class="leftDown" width="48%" height="350px" onclick="toggleZoom(this)">
+                            <h2>My Projects</h2>
                             <ul type="disc">
-                                <li>Lisza is the nightmare (Parkour game)</li> <br>
-                                <li>Lisza is having a nightmare (roguelite game)</li> <br>
-                                <li>in the future a roomba simulator using unreal engine so learning C++</li>
+                                <li><strong>Lisza is the Nightmare</strong> – A parkour game with challenging levels</li>
+                                <li><strong>Lisza is Having a Nightmare</strong> – A roguelite adventure game</li>
+                                <li><strong>Roomba Simulator</strong> – Future project using Unreal Engine & C++</li>
                             </ul>
                         </td> 
                     </tr>

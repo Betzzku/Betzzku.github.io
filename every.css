@@ -19,6 +19,30 @@
             color: #818181;
             display: block;
             transition: 0.3s;
+            position: relative;
+        }
+
+        /* Animated underline effect */
+        .sidenav a::after {
+            content: '';
+            position: absolute;
+            width: calc(100% - 32px);
+            height: 2px;
+            bottom: 5px;
+            left: 32px;
+            background: linear-gradient(90deg, #2ecc71, #27ae60);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .sidenav a:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* Don't show underline on close button */
+        .sidenav .closebtn::after {
+            display: none;
         }
         
         /* When you mouse over the navigation links, change their color */
@@ -30,6 +54,7 @@
         /* Position and style the close button (top right corner) */
         .sidenav .closebtn {
         position: absolute;
+        color: red;
         top: 0;
         right: 25px;
         font-size: 36px;
@@ -53,12 +78,11 @@
             left: 20px;
             z-index: 999;
             border: none;
-            border-radius: 50px;
+            border-radius: 10px;
             cursor: pointer;
             font-size: 18px;
             font-weight: bold;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            animation: float 3s ease-in-out infinite;
             transition: all 0.3s ease;
 
             width: auto; 
