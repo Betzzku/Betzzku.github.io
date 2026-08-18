@@ -1,543 +1,207 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <link rel="stylesheet" href="every.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Front page</title>
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            background: #ffffff;
-        }
-
-        body {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(-45deg, #ffffff, #e8f5e9, #f1f8e9, #fff5f5, #ffffff);
-            background-size: 400% 400%;
-            animation: gradientShift 20s ease infinite;
-            padding: 20px;
-        }
-        
-        @keyframes gradientShift {
-           0% {
-               background-position: 0% 50%;
-           }
-           50% {
-               background-position: 100% 50%;
-           }
-           100% {
-               background-position: 0% 50%;
-           }
-        }
-        
-        .scene {
-            width: 1400px;
-            max-width: 98vw;
-            min-height: 900px;
-            padding: 30px;
-        }
-
-        .card {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            transition: transform 1s cubic-bezier(.4,2,.6,1);
-            transform-style: preserve-3d;
-        }
-    
-        .side {
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            border-radius: 30px;
-            box-shadow: 
-                0 30px 60px rgba(0, 0, 0, 0.12),
-                0 15px 30px rgba(0, 0, 0, 0.08);
-            overflow: visible;
-            padding: 50px;
-        }
-
-        .front {
-            background: linear-gradient(145deg, #f8fbff 0%, #ffffff 50%, #f0f7ff 100%);
-        }
-        
-        h1 {
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-            text-align: center;
-            padding: 25px 40px;
-            border-radius: 20px;
-            width: 50%;
-            margin: 0 auto 40px auto;
-            box-shadow: 
-                0 15px 35px rgba(0, 0, 0, 0.1),
-                0 5px 15px rgba(0, 0, 0, 0.07);
-            font-size: 2.8rem;
-            font-weight: 700;
-            color: #2c3e50;
-            letter-spacing: 1px;
-            transition: all 0.5s cubic-bezier(.4,2,.6,1);
-        }
-
-        h1:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 
-                0 25px 50px rgba(0, 0, 0, 0.15),
-                0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        h2 {
-            font-size: 1.6rem;
-            color: #2ecc71;
-            margin-bottom: 20px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            border-bottom: 3px solid #e8f5e9;
-            padding-bottom: 10px;
-            display: inline-block;
-        }
-
-        ul {
-            padding-left: 25px;
-            margin-bottom: 30px;
-        }
-
-        ul li {
-            font-size: 1.15rem;
-            line-height: 1.8;
-            margin-bottom: 12px;
-            color: #555;
-            position: relative;
-        }
-
-        ul li::marker {
-            color: #2ecc71;
-        }
-
-        a {
-            color: #2ecc71;
-            text-decoration: none;
-            font-weight: 600;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        a:hover {
-            color: #27ae60;
-        }
-
-        a::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            bottom: -2px;
-            left: 0;
-            background: linear-gradient(90deg, #2ecc71, #27ae60);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        a:hover::after {
-            transform: scaleX(1);
-        }
-
-        @media screen and (max-height: 450px) {
-            .sidenav {padding-top: 15px;}
-            .sidenav a {font-size: 18px;}
-        }
-
-        /* Mobile Responsive Design */
-        @media screen and (max-width: 768px) {
-            body {
-                min-height: 100vh;
-                padding: 10px;
-                align-items: flex-start;
-                justify-content: center;
-            }
-            .scene {
-                width: 100%;
-                height: auto;
-                min-height: auto;
-                padding: 10px;
-                margin-top: 60px;
-            }
-            
-            .card {
-                width: 100%;
-                height: auto;
-            }
-            .side {
-                height: auto;
-                padding: 25px;
-                border-radius: 20px;
-            }
-            
-            table {
-                display: block;
-                width: 100%;
-                height: auto;
-            }
-            
-            tr {
-                display: block;
-                margin-bottom: 15px;
-            }
-            
-            td {
-                display: block !important;
-                width: 100% !important;
-                height: auto !important;
-                margin-bottom: 15px;
-            }
-            
-            h1 {
-                width: 90%;
-                font-size: 1.8rem;
-                padding: 20px;
-                margin-bottom: 25px;
-            }
-
-            h2 {
-                font-size: 1.3rem;
-            }
-
-            ul li {
-                font-size: 1rem;
-            }
-            
-            .leftUp, .leftDown, .right {
-                margin-bottom: 20px;
-                padding: 25px;
-                height: auto !important;
-                min-height: auto;
-            }
-            
-            .leftUp.zoomed, .leftDown.zoomed, .right.zoomed {
-                transform: scale(1.05) !important;
-                z-index: 100;
-            }
-            
-            .sidenav a {
-                font-size: 20px;
-                padding: 12px 12px 12px 25px;
-            }
-            
-            .openbtn {
-                padding: 12px;
-                font-size: 16px;
-            }
-        }
-
-        @media screen and (max-width: 480px) {
-            body {
-                padding: 5px;
-            }
-            .scene {
-                width: 100%;
-                padding: 5px;
-                margin-top: 50px;
-            }
-            .side {
-                padding: 20px;
-                border-radius: 15px;
-            }
-            
-            h1 {
-                width: 95%;
-                font-size: 1.5rem;
-                padding: 15px;
-            }
-
-            h2 {
-                font-size: 1.2rem;
-                margin-bottom: 15px;
-            }
-            
-            .leftUp, .leftDown, .right {
-                padding: 20px;
-            }
-            
-            ul li {
-                font-size: 0.95rem;
-                line-height: 1.6;
-                margin-bottom: 8px;
-            }
-            
-            .leftUp.zoomed, .leftDown.zoomed, .right.zoomed {
-                transform: scale(1.02) !important;
-            }
-        }
-
-        /* Table CSS */
-        table {
-            padding: 20px;
-            overflow: visible;
-            border-spacing: 20px;
-        }
-
-        .leftUp {
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
-            padding: 35px;
-            border-radius: 20px;
-            box-shadow: 
-                0 15px 35px rgba(0, 0, 0, 0.08),
-                0 5px 15px rgba(0, 0, 0, 0.05);
-            position: relative;
-            z-index: 1;
-            cursor: pointer;
-            border-left: 5px solid #2ecc71;
-        }
-
-        .leftUp:hover {
-            transform: translateY(-5px);
-            box-shadow: 
-                0 20px 45px rgba(0, 0, 0, 0.12),
-                0 10px 25px rgba(0, 0, 0, 0.08);
-        }
-
-        .leftUp.zoomed {
-            transform: scale(1.4) translate(15%, 15%);
-            background: linear-gradient(145deg, #ffffff 0%, #e8f5e9 100%);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
-            z-index: 100;
-            border-left: 5px solid #27ae60;
-        }
-
-        .leftDown {
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
-            padding: 35px;
-            border-radius: 20px;
-            box-shadow: 
-                0 15px 35px rgba(0, 0, 0, 0.08),
-                0 5px 15px rgba(0, 0, 0, 0.05);
-            position: relative;
-            z-index: 1;
-            cursor: pointer;
-            border-left: 5px solid #3498db;
-        }
-
-        .leftDown:hover {
-            transform: translateY(-5px);
-            box-shadow: 
-                0 20px 45px rgba(0, 0, 0, 0.12),
-                0 10px 25px rgba(0, 0, 0, 0.08);
-        }
-
-        .leftDown.zoomed {
-            transform: scale(1.4) translate(15%, -15%);
-            background: linear-gradient(145deg, #ffffff 0%, #e3f2fd 100%);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
-            z-index: 100;
-            border-left: 5px solid #2980b9;
-        }
-        
-        .right {
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
-            padding: 35px;
-            border-radius: 20px;
-            box-shadow: 
-                0 15px 35px rgba(0, 0, 0, 0.08),
-                0 5px 15px rgba(0, 0, 0, 0.05);
-            position: relative;
-            z-index: 1;
-            cursor: pointer;
-            border-left: 5px solid #9b59b6;
-        }
-
-        .right:hover {
-            transform: translateY(-5px);
-            box-shadow: 
-                0 20px 45px rgba(0, 0, 0, 0.12),
-                0 10px 25px rgba(0, 0, 0, 0.08);
-        }
-
-        .right.zoomed {
-            transform: scale(1.4) translate(-15%, 0%);
-            background: linear-gradient(145deg, #ffffff 0%, #f3e5f5 100%);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
-            z-index: 100;
-            border-left: 5px solid #8e44ad;
-        }
-
-        td {
-            color: #555;
-            vertical-align: top;
-        }
-
-        /* Card section icons */
-        .section-icon {
-            font-size: 2rem;
-            margin-bottom: 15px;
-            display: block;
-        }
-
-        .Project-links {
-            color: rgb(173, 173, 49);
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Petteri Mikkonen — Front page</title>
+<link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <div class="navbar">
-        <div class="openbtnDiv">
-            <span class="openbtn" onclick="openNav()">...</span>
+
+    <!-- HEADER -->
+    <header class="topnav" id="topnav">
+        <div class="topnav-inner">
+            <a class="brand" href="index.html"><span class="brand-prompt">$</span> petteri</a>
+
+            <nav class="nav-links" id="navLinks">
+                <a class="active" href="index.html">Front page</a>
+                <a href="info.html">Info</a>
+                <a href="contact.html">Contact</a>
+                <a target="_blank" rel="noopener" href="https://github.com/Betzzku">GitHub</a>
+                <a target="_blank" rel="noopener" href="https://steamcommunity.com/id/Betzzku">Steam</a>
+            </nav>
+
+            <button class="menubtn" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
         </div>
-        
-        <div id="mySidenav" class="sidenav">
-            <a class="active" href="index.html">Front page</a>
-            <a href="tietoa.html">Info</a>
-            <a href="yhteitieto.html">Contact me</a>
-            <a target="_blank" href="https://github.com/Betzzku">GitHub</a>
-            <a target="_blank" href="https://steamcommunity.com/id/Betzzku">Steam</a>
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        </div>
-    </div>
-    
-    <div class="scene">
-        <div class="card" id="flipCard">
-            <div class="side front">
-                <table width="100%">
-                    <tr>
-                        <td colspan="3">
-                            <h1>Petteri Mikkonen</h1>    
-                        </td> 
-                    </tr>
-                    
-                    <tr>
-                        <td height="20px" colspan="3"></td>
-                    </tr>
+    </header>
 
-                    <tr>
-                        <td class="leftUp" height="350px" width="48%" onclick="toggleZoom(this)">
-                            
-                            <h2>About Me</h2>
-
-                            <ul type="disc">
-                                <li>ICT student at Sakky</li>
-                                <li>Studying to become a software developer</li>
-                                <li>Eager to learn and see progress in my work</li>
-                            </ul>
-
-                            <h2>Skills</h2>
-                            <ul type="disc">
-                                <li><strong>C#</strong> – Learning through Unity game development</li>
-                                <li><strong>HTML & CSS</strong> – Good understanding</li>
-                                <li><strong>PHP</strong> – Basic knowledge</li>
-                                <li><strong>JavaScript</strong> – Basic knowledge</li>
-                                <li><strong>SQL</strong> – Basic knowledge</li>
-                            </ul>
-                        </td>
-
-                        <td width="4%"></td>
-
-                        <td rowspan="3" class="right" height="350px" width="48%" onclick="toggleZoom(this)">
-                            <h2>Work Experience</h2>
-                            <ul type="disc">
-                                <li><strong>Summer 2024</strong> – Worked at <a href="https://www.warame.fi/">Warame</a></li>
-                                <li><strong>Summer 2023</strong> – Post carrier at <a href="https://www.ssm.fi/">SSM</a></li>
-                            </ul>
-
-                            <h2>Education</h2>
-                            <ul type="disc">
-                                <li>Currently studying ICT at Sakky</li>
-                                <li>Focusing on software development</li>
-                            </ul>
-
-                            <h2>Things I find interesting</h2>
-                            <ul type="disc">
-                                <li>Learning about operating systems</li>
-                                <li>Learning to edit videos with Davinci Resolve</li>
-                                <li>Learning about music making </li>
-                            </ul>
-
-                            <h2>My school projects</h2>
-                            <ul type="disc">
-
-                                <li><a class="Project-links" target="_blank" href="https://tvt-linux.tvtedu.fi/~213605/Weather-Project/base_project/">Weather OY (link)</a>
-                                 <ul>
-                                    <li>Works with API key</li>
-                                    <li>Fully working SQL database</li>
-                                    <li>Can search different cities</li>
-                                    <li>Has login system</li>
-                                 </ul>   
-                                </li>
-
-                                <li><a class="Project-links" target="_blank" href="https://tvt-linux.tvtedu.fi/~213605/luokkavarausvempale/">Class reservation website (link)</a>
-                                    <ul>
-                                        <li>Has login system</li>
-                                        <li>Fully working SQL database</li>
-                                        <li>Automatic container placement</li>
-                                        <li>Reservation system</li>
-                                        <li>Can make classes and join different classes</li>
-                                    </ul>
-                                </li>
-                            </ul>
-
-
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td height="20px"></td>
-                    </tr>
-
-                    <tr>
-                        <td class="leftDown" width="48%" height="350px" onclick="toggleZoom(this)">
-                            <h2>Personality</h2>
-                            <ul type="disc">
-                                <li>Eager to tackle challenges</li>
-                                <li>Friendly & approachable</li>
-                                <li>Great communicator</li>
-                                <li>Flexible & adaptable</li>
-                                <li>Honest & reliable</li>
-                            </ul>
-
-                            <h2>Hobbies</h2>
-                            <ul type="disc">
-                                <li>Game development</li>
-                                <li>Playing video games</li>
-                                <li>Coding side projects</li>
-                            </ul>
-                        </td> 
-                    </tr>
-                    
-                </table>
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-photo">
+                <img src="" alt="" class="hero-photo-img">
+            </div>
+            <div class="hero-text">
+                <p class="eyebrow">$ whoami</p>
+                <h1>Petteri Mikkonen</h1>
+                <p class="hero-tagline">ICT student at Sakky, studying to become a software developer.
+                    Eager to learn and see steady progress in my work.</p>
+                <div class="hero-links">
+                    <a class="btn btn-primary" href="#projects">See my projects</a>
+                    <a class="btn btn-ghost" href="yhteitieto.html">Contact me</a>
+                </div>
             </div>
         </div>
-    </div>
-    
-    <script>
-    function openNav() {
-        document.getElementById("mySidenav").style.width = "250px";
-    }
-    function closeNav() {
-        document.getElementById("mySidenav").style.width = "0";
-    }
-    
-    function toggleZoom(element) {
-        // First, remove 'zoomed' class from all panels
-        const allPanels = document.querySelectorAll('.leftUp, .leftDown, .right');
-        allPanels.forEach(panel => {
-            if (panel !== element) {
-                panel.classList.remove('zoomed');
-            }
+    </section>
+
+    <!-- ===== ABOUT + SKILLS ===== -->
+    <section class="block">
+        <div class="block-inner two-col">
+            <div>
+                <p class="eyebrow">$ about me</p>
+                <h2>About Me</h2>
+                <ul>
+                    <li>ICT student at Sakky</li>
+                    <li>Studying to become a software developer</li>
+                    <li>Eager to learn and see progress in my work</li>
+                </ul>
+            </div>
+            <div>
+                <p class="eyebrow">$ skills --list</p>
+                <h2>Skills</h2>
+                <ul class="skill-list">
+                    <li><strong>C#</strong><span>Learning through Unity game development</span></li>
+                    <li><strong>HTML &amp; CSS</strong><span>Good understanding</span></li>
+                    <li><strong>PHP</strong><span>Basic knowledge</span></li>
+                    <li><strong>JavaScript</strong><span>Basic knowledge</span></li>
+                    <li><strong>SQL</strong><span>Basic knowledge</span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!--EXPERIENCE + EDUCATION + INTERESTS-->
+    <section class="block block-alt">
+        <div class="block-inner three-col">
+            <div>
+                <p class="eyebrow">$ work history</p>
+                <h2>Work Experience</h2>
+                <ul>
+                    <li><strong>Summer 2026</strong> I did my 3 month TEO at <a href="https://bcbertenex.com/fi/" target="_blank" rel="noopener">BCBertenex</a> </li>
+                    <li><strong>Summer 2025</strong> Worked at <a href="https://www.warame.fi/" target="_blank" rel="noopener">Warame</a> </li>
+                    <li><strong>Summer 2024</strong> Worked at <a href="https://www.warame.fi/" target="_blank" rel="noopener">Warame</a></li>
+                    <li><strong>Summer 2023</strong> Post carrier at <a href="https://www.ssm.fi/" target="_blank" rel="noopener">SSM</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="eyebrow">$ education</p>
+                <h2>Education</h2>
+                <ul>
+                    <li>Currently studying ICT at Sakky</li>
+                    <li>Focusing on software development</li>
+                </ul>
+            </div>
+            <div>
+                <p class="eyebrow">$ interests --show</p>
+                <h2>Things I find interesting</h2>
+                <ul>
+                    <li>Game development</li>
+                    <li>Operating systems</li>
+                    <li>Gaming</li>
+                    <li>Music</li>
+                    <li>Linux</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects-->
+    <section class="block" id="projects">
+        <div class="block-inner">
+            <p class="eyebrow">$ school-projects</p>
+            <h2>My School Projects</h2>
+
+            <div class="project-grid">
+                <article class="project-card">
+                    <img src="img/weather-oy-mini.png" alt="Weather OY" class="project-image">
+                    <div class="project-body">
+                        <h3><a class="Project-links" target="_blank" rel="noopener" href="https://tvt-linux.tvtedu.fi/~213605/Weather-Project/base_project/">Weather OY</a></h3>
+                        <ul>
+                            <li>Works with API key</li>
+                            <li>Fully working SQL database</li>
+                            <li>Can search different cities</li>
+                            <li>Has login system</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                        <img src="img/class-reservation.png" alt="Class reservation" class="project-image">
+                    <div class="project-body">
+                        <h3><a class="Project-links" target="_blank" rel="noopener" href="https://tvt-linux.tvtedu.fi/~213605/luokkavarausvempale/">Class reservation website</a></h3>
+                        <ul>
+                            <li>Has login system</li>
+                            <li>Fully working SQL database</li>
+                            <li>Automatic container placement</li>
+                            <li>Reservation system</li>
+                            <li>Can make classes and join different classes</li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!--PERSONALITY + HOBBIES-->
+    <section class="block block-alt">
+        <div class="block-inner two-col">
+            <div>
+                <p class="eyebrow">$ traits</p>
+                <h2>Personality</h2>
+                <ul>
+                    <li>Friendly &amp; approachable</li>
+                    <li>Like to talk a lot</li>
+                    <li>Flexible &amp; adaptable</li>
+                    <li>Honest &amp; reliable</li>
+                    <li>Always on time</li>
+                </ul>
+            </div>
+            <div>
+                <p class="eyebrow">$ hobbies --list</p>
+                <h2>Hobbies</h2>
+                <ul>
+                    <li>Game development</li>
+                    <li>Playing video games</li>
+                    <li>Coding side projects</li>
+                    <li>Learning about Linux</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; <span id="year"></span> Petteri Mikkonen</p>
+    </footer>
+
+<script>
+    // Mobile nav toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+
+    menuBtn.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('open');
+        menuBtn.classList.toggle('open', isOpen);
+        menuBtn.setAttribute('aria-expanded', isOpen);
+    });
+
+    // Close mobile nav after clicking a link
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('open');
+            menuBtn.classList.remove('open');
+            menuBtn.setAttribute('aria-expanded', 'false');
         });
-        
-        // Toggle the 'zoomed' class on the clicked element
-        element.classList.toggle('zoomed');
-    }
-    </script>
+    });
+
+    // Shrink nav bar on scroll
+    const topnav = document.getElementById('topnav');
+    window.addEventListener('scroll', () => {
+        topnav.classList.toggle('scrolled', window.scrollY > 10);
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
