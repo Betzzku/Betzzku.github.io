@@ -55,9 +55,12 @@ a:hover { color: var(--green-darker); text-decoration: underline; }
     letter-spacing: 0.02em;
 }
 
-/* =====================================================
-   Top navigation
-===================================================== */
+.h2-titles {
+    font-family: var(--font-mono);
+    border-bottom: #2ecc71 2px solid;
+}
+
+/* Top navigation */
 .topnav {
     position: sticky;
     top: 0;
@@ -127,7 +130,7 @@ a:hover { color: var(--green-darker); text-decoration: underline; }
 
 .nav-links a.active { color: var(--ink); }
 
-/* Mobile hamburger */
+/* Mobile hamburger menu */
 .menubtn {
     display: none;
     flex-direction: column;
@@ -154,9 +157,8 @@ a:hover { color: var(--green-darker); text-decoration: underline; }
 .menubtn.open span:nth-child(2) { opacity: 0; }
 .menubtn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* =====================================================
-   Hero
-===================================================== */
+/* Hero */
+
 .hero {
     background: linear-gradient(180deg, var(--mint) 0%, var(--white) 100%);
 }
@@ -172,7 +174,7 @@ a:hover { color: var(--green-darker); text-decoration: underline; }
 
 .hero-photo { flex-shrink: 0; }
 
-.hero-photo .img-placeholder {
+.hero-photo-img {
     width: 180px;
     height: 180px;
     border-radius: 50%;
