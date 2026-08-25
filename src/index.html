@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Petteri Mikkonen — Front page</title>
+<link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="topnav" id="topnav">
+        <div class="topnav-inner">
+            <a class="brand" href="index.html"><span class="brand-prompt">$</span> petteri</a>
+
+            <nav class="nav-links" id="navLinks">
+                <a class="active" href="index.html">Front page</a>
+                <a href="contact.html">Contact</a>
+                <a target="_blank" rel="noopener" href="https://github.com/Betzzku">GitHub</a>
+                <a target="_blank" rel="noopener" href="https://steamcommunity.com/id/Betzzku">Steam</a>
+            </nav>
+
+            <button class="menubtn" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-photo">
+                <img src="assets/img/profile-picture.jpg" alt="" class="hero-photo-img">
+            </div>
+            <div class="hero-text">
+                <p class="eyebrow">$ whoami</p>
+                <h1>Petteri Mikkonen</h1>
+                <p class="hero-tagline">ICT student at Sakky, studying to become a software developer.
+                    Eager to learn and see steady progress in my work.</p>
+                <div class="hero-links">
+                    <a class="btn btn-primary" href="#projects">See my projects</a>
+                    <a class="btn btn-ghost" href="contact.html">Contact me</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--ABOUT + SKILLS-->
+    <section class="block">
+        <div class="block-inner two-col">
+            <div>
+                <p class="eyebrow">$ about me</p>
+                <h2 class="h2-titles">About Me</h2>
+                <ul>
+                    <li>ICT student at Sakky</li>
+                    <hr>
+                    <li>Studying to become a software developer</li>
+                    <hr>
+                    <li>Eager to learn and see progress in my work</li>
+                    <hr>
+                </ul>
+            </div>
+            <div>
+                <p class="eyebrow">$ skills --list</p>
+                <h2 class="h2-titles">Skills</h2>
+                <ul class="skill-list">
+                    <li><strong>C#</strong><span>Learning through Unity game development</span></li>
+                    <hr>
+                    <li><strong>HTML &amp; CSS</strong><span>Good understanding</span></li>
+                    <hr>
+                    <li><strong>PHP</strong><span>Basic knowledge</span></li>
+                    <hr>
+                    <li><strong>JavaScript</strong><span>Basic knowledge</span></li>
+                    <hr>
+                    <li><strong>SQL</strong><span>Basic knowledge</span></li>
+                    <hr>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!--EXPERIENCE + EDUCATION + INTERESTS-->
+    <section class="block block-alt">
+        <div class="block-inner three-col">
+            <div>
+                <p class="eyebrow">$ work history</p>
+                <h2 class="h2-titles">Work Experience</h2>
+                <ul>
+                    <li><strong>Summer 2026</strong> I did my 3 month TEO at <a href="https://bcbertenex.com/fi/" target="_blank" rel="noopener">BCBertenex</a> </li>
+                    <li><strong>Summer 2025</strong> Worked at <a href="https://www.warame.fi/" target="_blank" rel="noopener">Warame</a> </li>
+                    <li><strong>Summer 2024</strong> Worked at <a href="https://www.warame.fi/" target="_blank" rel="noopener">Warame</a></li>
+                    <li><strong>Summer 2023</strong> Post carrier at <a href="https://www.ssm.fi/" target="_blank" rel="noopener">SSM</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="eyebrow">$ education</p>
+                <h2 class="h2-titles">Education</h2>
+                <ul>
+                    <li>Currently studying ICT at Sakky</li>
+                    <li>Focusing on software development</li>
+                </ul>
+            </div>
+            <div>
+                <p class="eyebrow">$ interests</p>
+                <h2 class="h2-titles">Things I find interesting</h2>
+                <ul>
+                    <li>Game development</li>
+                    <li>Operating systems</li>
+                    <li>Gaming</li>
+                    <li>Music</li>
+                    <li>Linux</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects-->
+    <section class="block" id="projects">
+        <div class="block-inner">
+            <p class="eyebrow">$ school-projects</p>
+            <h2 class="h2-titles">My School Projects</h2>
+
+            <div class="project-grid">
+                <article class="project-card">
+                    <img src="assets/img/weather-oy-mini.png" alt="Weather OY" class="project-image">
+                    <div class="project-body">
+                        <h3><a class="Project-links" target="_blank" rel="noopener" href="https://tvt-linux.tvtedu.fi/~213605/Weather-Project/base_project/">Weather OY</a></h3>
+                        <ul>
+                            <li>Works with API key</li>
+                            <li>Fully working SQL database</li>
+                            <li>Can search different cities</li>
+                            <li>Has login system</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                        <img src="assets/img/class-reservation.png" alt="Class reservation" class="project-image">
+                    <div class="project-body">
+                        <h3><a class="Project-links" target="_blank" rel="noopener" href="https://tvt-linux.tvtedu.fi/~213605/luokkavarausvempale/">Class reservation website</a></h3>
+                        <ul>
+                            <li>Has login system</li>
+                            <li>Has student and teacher roles</li>
+                            <li>Fully working SQL database</li>
+                            <li>Automatic container placement</li>
+                            <li>Reservation system</li>
+                            <li>Can make classes and join different classes</li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!--PERSONALITY + HOBBIES-->
+    <section class="block block-alt">
+        <div class="block-inner two-col">
+            <div>
+                <p class="eyebrow">$ traits</p>
+                <h2 class="h2-titles">Personality</h2>
+                <ul>
+                    <li>Friendly &amp; approachable</li>
+                    <li>Like to talk a lot</li>
+                    <li>Flexible &amp; adaptable</li>
+                    <li>Honest &amp; reliable</li>
+                    <li>Always on time</li>
+                </ul>
+            </div>
+            <div>
+                <p class="eyebrow">$ hobbies</p>
+                <h2 class="h2-titles">Hobbies</h2>
+                <ul>
+                    <li>Game development</li>
+                    <li>Playing video games</li>
+                    <li>Coding side projects</li>
+                    <li>Learning about Linux</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; <span id="year"></span> Petteri Mikkonen</p>
+    </footer>
+
+<script src="index.js"></script>
+</body>
+</html>
