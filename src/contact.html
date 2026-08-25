@@ -8,6 +8,8 @@
     <link rel='stylesheet' type='text/css' media='screen' href='index.css'>
 </head>
 <body>
+
+     <!-- HEADER -->
     <header class="topnav" id="topnav">
         <div class="topnav-inner">
             <a class="brand" href="index.html"><span class="brand-prompt">$</span> petteri</a>
@@ -22,26 +24,27 @@
             <button class="menubtn" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false">
                 <span></span><span></span><span></span>
             </button>
-            
         </div>
     </header>
     
     
-    <div class="laatikot">
-        <h1>Contact me</h1>
-        <p class="subtitle">I'd love to hear from you! Drop me a message below.</p>
+    <div class="form-container">
+        <p class="eyebrow">$ contact-form</p>
+        <h2 class="h2-titles">Contact me</h2>
+        <p class="subtitle">Drop me a message below!</p>
     
-        <form  action="https://formspree.io/f/xlgbjkne" method="POST">
-            <div class="tiedot">
-                <input type="text" name="Nimi" placeholder="Your Name" required>
-                <input type="email" name="Sähkoposti" placeholder="Your Email" required>
+        <form action="https://formspree.io/f/xlgbjkne" method="POST">
+            <div class="form-insider">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
             </div>
-            <textarea class="Viesti" name="Viesti" placeholder="Write your message here..." required></textarea>
-            <button class="button" type="submit">Send Message</button>
+            <textarea class="message" name="message" placeholder="Write your message here..." required></textarea>
+            <button class="btn btn-submit" type="submit">
+                <span>Send</span>
+            </button>
         </form>
     </div>
     
 </body>
-<script src="index.js">
-</script>
+<script src="index.js"></script>
 </html>

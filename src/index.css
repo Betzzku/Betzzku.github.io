@@ -1,6 +1,4 @@
-/* =====================================================
-   Tokens
-===================================================== */
+/* Tokens */
 :root {
     --green: #2ecc71;
     --green-dark: #1f9c58;
@@ -9,7 +7,7 @@
     --mint-border: #e0f0e6;
     --ink: #1b2b22;
     --ink-muted: #5b6b62;
-    --white: #ffffff;
+    --bg: #ffffff;
     --shadow-sm: 0 4px 14px rgba(27, 43, 34, 0.06);
     --shadow-md: 0 12px 30px rgba(27, 43, 34, 0.08);
     --font-display: 'Space Grotesk', 'Segoe UI', sans-serif;
@@ -24,7 +22,7 @@ html { scroll-behavior: smooth; }
 body {
     margin: 0;
     padding: 0;
-    background: var(--white);
+    background: var(--bg);
     color: var(--ink);
     font-family: var(--font-body);
     line-height: 1.6;
@@ -232,9 +230,7 @@ a:hover { color: var(--green-darker); text-decoration: underline; }
     transform: translateY(-2px);
 }
 
-/* =====================================================
-   Page-wide content blocks
-===================================================== */
+/* Page-wide content blocks */
 .block {
     padding: 64px 32px;
 }
@@ -270,9 +266,7 @@ a:hover { color: var(--green-darker); text-decoration: underline; }
     font-size: 0.92rem;
 }
 
-/* =====================================================
-   Projects
-===================================================== */
+/* Projects */
 .project-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -308,9 +302,98 @@ a:hover { color: var(--green-darker); text-decoration: underline; }
 
 .project-body h3 { margin-bottom: 12px; }
 
-/* =====================================================
-   Footer
-===================================================== */
+/* --- Contact page additions --- */
+ 
+.contact-hero-inner {
+    flex-direction: column;
+    text-align: center;
+    padding-bottom: 40px;
+}
+.contact-hero-inner .hero-text {
+    max-width: 620px;
+}
+ 
+.form-container {
+    max-width: 640px;
+    margin: 0 auto;
+    background: var(--bg);
+    border: 1px solid var(--mint-border);
+    border-radius: 18px;
+    padding: 36px;
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-submit {
+    background: var(--green);
+    color: #ffffff;
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-submit:hover span{ display: none;}
+
+.btn-submit:hover:before {
+    content: "Are you sure?";
+}
+
+.btn-submit:hover {
+    background: var(--green-dark);
+    transform: translateY(-2px);
+    color: #ffffff;
+}
+
+.form-insider {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+ 
+.form-container input,
+.form-container textarea {
+    width: 100%;
+    font-family: var(--font-body);
+    font-size: 0.98rem;
+    color: var(--ink);
+    background: var(--mint);
+    border: 1.5px solid var(--mint-border);
+    border-radius: 10px;
+    padding: 12px 14px;
+    transition: border-color 0.2s ease;
+}
+ 
+.form-container input::placeholder,
+.form-container textarea::placeholder {
+    color: var(--ink-muted);
+}
+ 
+.form-container input:focus,
+.form-container textarea:focus {
+    outline: none;
+    border-color: var(--green);
+}
+ 
+.form-container .message {
+    display: block;
+    min-height: 160px;
+    resize: vertical;
+    margin-bottom: 20px;
+}
+ 
+.form-container .btn {
+    border: none;
+    cursor: pointer;
+}
+ 
+@media screen and (max-width: 600px) {
+    .form-insider {
+        grid-template-columns: 1fr;
+    }
+    .form-container {
+        padding: 24px;
+    }
+}
+
+/* Footer */
 .footer {
     text-align: center;
     padding: 32px;
@@ -319,9 +402,7 @@ a:hover { color: var(--green-darker); text-decoration: underline; }
     border-top: 1px solid var(--mint-border);
 }
 
-/* =====================================================
-   Responsive
-===================================================== */
+/*  Responsive */
 @media screen and (max-width: 900px) {
     .two-col,
     .three-col {
